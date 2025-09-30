@@ -11,6 +11,7 @@
 #include "pimParamsDram.h"             // for pimParamsDram
 #include "pimCmd.h"                    // for PimCmdEnum
 #include "pimResMgr.h"                 // for pimObjInfo
+#include "pimTLB.h"
 #include <cstdint>
 #include <memory>                      // for std::unique_ptr
 
@@ -106,6 +107,8 @@ protected:
   unsigned m_tRCD; // RCD in cycles
   unsigned m_tRP; // RP in cycles
   unsigned m_tRAS; // RAS in cycles
+
+  HMT HMT_model;
 };
 
 #endif

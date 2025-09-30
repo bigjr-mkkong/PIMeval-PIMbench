@@ -11,6 +11,7 @@
 #include "pimPerfEnergyBankLevel.h"
 #include "pimPerfEnergyAquabolt.h"
 #include "pimPerfEnergyAim.h"
+#include "pimTLB.h"
 #include <cstdint>
 #include <cstdio>
 
@@ -75,8 +76,10 @@ pimPerfEnergyBase::pimPerfEnergyBase(const pimPerfEnergyModelParams& params)
   m_tRP = m_paramsDram.gettRP();
   m_tCAS = m_paramsDram.getNsTCAS() / m_nano_to_milli; // Convert ns to ms
   m_tRAS = m_paramsDram.gettRAS();
-}
 
+  HMT_model.set_m_etrans(HMT_ETRANS);
+  HMT_model.set_m_ttrans(HMT_TTRANS);
+}
 //! @brief  Perf energy model of data transfer between CPU memory and PIM memory
 pimeval::perfEnergy
 pimPerfEnergyBase::getPerfEnergyForBytesTransfer(PimCmdEnum cmdType, uint64_t numBytes) const
